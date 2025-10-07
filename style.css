@@ -1,3 +1,59 @@
+/* Greeting Modal Styles */
+.greeting-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 30, 30, 0.55);
+  z-index: 9999;
+}
+.greeting-modal-content {
+  background: var(--bg-primary, #fff);
+  color: var(--text-primary, #333);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 2.5rem 2rem 2rem 2rem;
+  text-align: center;
+  min-width: 320px;
+  max-width: 90vw;
+  position: relative;
+  animation: fadeInUp 0.7s cubic-bezier(.4,2,.3,1);
+}
+.greeting-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 1.7rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.greeting-close:hover {
+  color: #e74c3c;
+}
+.greeting-icon {
+  font-size: 2.7rem;
+  margin-bottom: 0.7rem;
+  animation: pulse 1.2s infinite;
+}
+.greeting-animate {
+  animation: fadeInUp 0.7s cubic-bezier(.4,2,.3,1);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
 :root {
   /* Primitive Color Tokens */
   --color-white: rgba(255, 255, 255, 1);
@@ -1070,7 +1126,7 @@ p {
 }
 
 .hero-title {
-  font-size: clamp(var(--font-size-3xl), 5vw, 48px);
+  font-size: clamp(var(--font-size-3xl), 5vw, 80px);
   color: rgb(255, 210, 0);
   margin-bottom: var(--space-24);
   font-weight: var(--font-weight-bold);

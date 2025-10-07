@@ -157,37 +157,72 @@ class ContactFormManager {
     }
 
     handleSubmit() {
-        const formData = new FormData(this.form);
-        const service = formData.get('service');
-        const message = formData.get('message');
-        const recaptcha = document.getElementById('recaptcha').checked;
+            const formData = new FormData(this.form);
+            const service = formData.get('service');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            const recaptcha = document.getElementById('recaptcha').checked;
 
-        // Basic validation
-        if (!service) {
-            alert('Please select a service');
-            return;
-        }
+            // Basic validation
+            if (!service) {
+                alert('Please select a service');
+                return;
+            }
 
-        if (!message || message.trim().length < 10) {
-            alert('Please enter a message (at least 10 characters)');
-            return;
-        }
+            if (!phone || !/^\d{10}$/.test(phone)) {
+                alert('Please enter a valid 10-digit phone number');
+                return;
+            }
 
-        if (!recaptcha) {
-            alert('Please complete the reCAPTCHA verification');
-            return;
-        }
+            if (!message || message.trim().length < 10) {
+                alert('Please enter a message (at least 10 characters)');
+                return;
+            }
 
-        // Show loading
-        const submitButton = this.form.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            if (!recaptcha) {
+                alert('Please complete the reCAPTCHA verification');
+                return;
+            }
 
-        // Simulate form submission
-        setTimeout(() => {
-            this.showSuccess();
-            this.resetForm();
-        }, 1500);
+            // Show loading
+            const submitButton = this.form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+            // SheetDB API integration
+            const SHEETDB_URL = 'https://sheetdb.io/api/v1/08jemap0cji2o';
+            const payload = {
+                data: [
+                    {
+                        service: service,
+                        phone: phone,
+                        message: message
+                    }
+                ]
+            };
+
+            fetch(SHEETDB_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    this.showSuccess();
+                    this.resetForm();
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Submission failed');
+                    });
+                }
+            })
+            .catch(error => {
+                alert('Error submitting form: ' + error.message);
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Request A Call Back';
+            });
     }
 
     showSuccess() {

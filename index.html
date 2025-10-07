@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URK Infraprojects - Best Construction Company in Bangalore</title>
+    <title>URK Infra Projects - Best Construction Company in Bangalore</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Greeting Popup Modal -->
+    <div id="greetingModal" class="greeting-modal" style="display:none;">
+        <div class="greeting-modal-content">
+            <span class="greeting-close" id="greetingClose">&times;</span>
+            <div class="greeting-icon">🌞</div>
+            <h2 id="greetingTitle">Welcome!</h2>
+            <p id="greetingMessage">We're glad to see you at URK Infra Projects.</p>
+        </div>
+    </div>
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="container">
             <div class="top-bar-content">
-                <span class="welcome-text">Welcome to URK Infraprojects</span>
+                <span class="welcome-text">Welcome to URK Infra Projects</span>
                 <div class="top-bar-right">
                     <span class="phone-number">📞 +91 9663884438</span>
                     <button class="btn btn-quote-small">Get Free Quote</button>
@@ -26,7 +35,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1>URK Infraprojects</h1>
+                    <h1>URK Infra Projects</h1>
                 </div>
                 <nav class="navigation">
                     <ul class="nav-menu">
@@ -53,7 +62,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">URK Infra Projects</h1>
-                <button class="btn btn-primary btn-large">GET FREE QUOTE</button>
+                <!-- <button class="btn btn-primary btn-large">GET FREE QUOTE</button> -->
                 <h2 class="hero-subtitle">Top Construction Company & Contractors in Bangalore</h2>
                 
                 <div class="hero-description">
@@ -336,21 +345,21 @@
                 <div class="testimonial-card">
                     <p>"There was my sister's wedding after one year and we wanted our complete home before that. We were amazed when the deadline was met precisely, including finishing, inspections, and cleanup. Hiring URK Infraprojects was my wisest decision. They develop innovative design concepts and provide suggestions that always make the resulting projects better."</p>
                     <div class="testimonial-author">
-                        <strong>Nithin</strong>
+                        <strong>Ramesh</strong>
                         <span>Best Construction Company</span>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <p>"The entire team of URK Infraprojects performed very professionally with great communication and excellent onsite project management. They earned our trust during our house construction journey. I wholeheartedly thank them."</p>
                     <div class="testimonial-author">
-                        <strong>Prathibha</strong>
+                        <strong>Rudresh</strong>
                         <span>Excellent Work..!</span>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <p>"URK Infraprojects has all the necessary attributes to be an excellent contractor. They are diligent, responsive, professional and yet very understanding with their clients. With their FREE consultation, they offer cost-saving alternatives when possible. We are deeply satisfied with the work and the professionalism he brings to the job."</p>
                     <div class="testimonial-author">
-                        <strong>Vinu</strong>
+                        <strong>Nithin</strong>
                         <span>Thank You..! URK Infraprojects</span>
                     </div>
                 </div>
@@ -376,6 +385,9 @@
                         <option value="architectural">Architectural Design</option>
                         <option value="turnkey">Turnkey House Construction</option>
                     </select>
+                </div>
+                <div class="form-row">
+                    <input class="form-control" type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
                 </div>
                 <div class="form-row">
                     <textarea class="form-control" name="message" placeholder="Your Message" rows="4" required></textarea>
